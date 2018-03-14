@@ -85,7 +85,7 @@ plugin = eosio::wallet_api_plugin
 plugin = eosio::chain_api_plugin
 plugin = eosio::http_plugin
 ```
-* 本地运行 eosiod
+* 断网，本地运行 eosiod
 
  `./eosiod --config-dir ./`
 
