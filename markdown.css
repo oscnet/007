@@ -59,7 +59,6 @@ p {
   /* !important is needed here because Hotmail/Outlook.com uses !important to
      kill the margin in <p>. We need this to win. */
   margin: 1.2em 0 !important;
-  text-indent:2em;
 
 }
 
@@ -79,6 +78,8 @@ li {
 li p {
   /* Needs !important to override rule above. */
   margin: 0.5em 0 !important;
+  text-indent:0em;
+
 }
 
 /* Smaller spacing for sub-lists */
@@ -113,6 +114,12 @@ blockquote::before, blockquote::after, q::before, q::after {
   content: none;
 }
 
+h1,h2,h3,h4 {
+  padding-bottom: 8px !important;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 1.3em 0 1em;
   padding: 0;
@@ -121,12 +128,10 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 1.6em;
-  border-bottom: 1px solid #ddd;
 }
 
 h2 {
   font-size: 1.4em;
-  border-bottom: 1px solid #eee;
 }
 
 h3 {
@@ -183,4 +188,8 @@ table tr th, table tr td {
 table tr th {
  font-weight: bold;
   background-color: #F0F0F0;
+}
+
+img {
+ text-aligin: center;
 }
