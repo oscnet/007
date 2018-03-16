@@ -1,75 +1,107 @@
-### 如何设置 MyEtherWallet 冷钱包
+### 如何使用 MyEtherWallet 冷钱包
 
 今天给大家介绍一个不使用硬件钱包，但安全性能并不比硬件钱包差的 MyEtherWallet 冷钱包的设置和使用方法。
 
 ### MyEtherWallet 简单介绍
 
-MyEtherWallet 的网页钱包使用非常简单，打开网页就可以使用，源代码开源，不会在服务器上存储用户的钱包信息如私钥和密码。支持 Ledger Wallet、TREZOR 等硬件钱包，功能极为丰富。是一把我们经常会用到的瑞士军刀！
+MyEtherWallet网页钱包是使用起来最简单的钱包，只需要打开网页就可以使用，MyEtherWallet代码开源，供大家审视，还有MyEtherWallet钱包是去中心化的钱包，它不会存储用户的钱包信息账号，就算有一天MyEtherWallet网站不能使用，你也可以通过钱包的私钥和密码在其他钱包上找回你的钱包账号，MyEtherWallet绝对安全，请放心使用。
 
-### 什么是冷储存？
+首先到 MEW 的主頁 ，大家可以在網站右上角切換網站語言，預設是「English」，按進去換其他語言就可以，這裡我們選擇繁體中文。基本上不切換到其他地方，就是產生錢包的頁面，我們在這裡輸入一組密碼，最少九個字元，然後按「產生錢包」，這個密碼將來是用來開啟錢包和轉帳用，所以 務必把密碼記住 。
 
-冷储存（Cold storage）是指将钱包离线保存的一种方法。我们可以在一台离线的电脑或手机上生成地址和私钥，并将其妥善保存起来。这台电脑或手机以后就保持离线，永远不要连接网络！来确保私钥的安全。
+### MyEtherWallet 冷钱包原理和主要步骤
 
-### 冷钱包使用原理
-
-看到这里，大家可能就会产生一个关键的问题：那就是我们的区块链是基于互联网之上的，所有网络价值的转移都是需要通过联网将数据发到相应的区块链上。冷储存是离线的，根本不联网，那该如何实现价值转移呢？这里主要通过收币和发币这两个主要环节，来简要说明：
-
-* **收币**：收币其实根本用不到冷钱包，因为区块链的是一个公共的帐本，**币本质上并不是发到你的钱包上的！！（很多人都会有这个误解）**。只是公共帐本上有收到币的记录就 OK 了。你只需把钱包的地址告诉对方。对方发送后，到 https://etherscan.io 上去查看一下，看是不是收到就 ok 了。还可以在 etherscan.io 上注册个帐户，象我一样，把你常用的收款地址加入 Watch List , 如果有收到币，系统会发邮件通知你，你也可以随时登陆网站查看自己帐户上各个通证的余额。
-
-* **发币**：稍麻烦一点，在冷钱包上生成交易信息，然后进行签名，最后把签名后的代码拿到联网的电脑或手机上，通过它们把交易信息公布到区块链上。接着就等矿工打包确认了。
-
-### 让我们一起来一步步设置起来
+### 一步步设置
 
 1. 设置安全电脑或手机
-
-   准备一台不用的电脑或手机用来制作冷钱包。
-   然后在另外联网的电脑上
-  打开网址：[https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest)，下载 etherwallet-vX.X.X.X.zip 文件，然后将这个文件拷贝到冷钱包电脑上。解压。
-
 2. 生成钱包
-   在冷钱包电脑上用浏览器打开 `index.html`。
-
-   ![](../image/cs1.png)
-
-3. 备份钱包
-
-   ![](../image/cs2.png)
-
-   * 下载 keystore 文件，将它拷贝到 U 盘备份。 这个 U 盘只在冷钱包的电脑上专用，以后不要在其它电脑或地方使用。
-
-   * 备份后，点击 I understand, Continue 按钮。
-
-   ![](../image/cs3.png)
-
-   * 手抄下私钥，以备万一，如备份 keystore 的 U 盘坏了等情况。
-     也可以点击打印，如果你没有打印机，可以保存为 PDF 格式。
-
-   * 点一下保存你的地址。回到以下界面：
-     ![](../image/cs4.png)
-
+3. 保存备份钱包
 4. 测试冷钱包
-
-  * 钱包地址
-    ![](../image/cs5.png)
-    1. 选择 keystore / JSON File .
-    2. 点选择钱包文件，选择备份的 keystore 文件。
-    3. 输入密码，点解锁。
-    ![](../image/cs6.png)
-    4. 就会显示出钱包地址等信息。
-    5. 将地址拷贝到联网的电脑上，可以通过另外一个 U 盘或者扫描二维码来进行，为防止出错尽量不使用手写记录。
-  * 接收以太币
-    可以从其它地方发送一个很小的金额如 0.0001 ETH 到这个地址。看看有没问题。
+  * 接收以太
   * 发送以太
-    ![](../image/cs7.png)
-    1. 在联网的电脑上选择离线发送
-    2. 输入接收方地址后点生成信息
-    3. 在离线电脑上同一个地方输入生成的交易信息
-       ![](../image/cs8.png)
-    4. 解锁钱包后，点生成交易。
-    5. 把签名交易中的内容复制到放有地址的 U 盘。
-       ![](../image/cs9.png)
-    6. 在联网的电脑上复制签名交易信息，然后点发送交易，交易就将广播到区块链网络上。
+
 
 ### 结束语
 
-到这里冷钱包的制作和使用就已经完成了，如果为了进一步确保安全，作为冷钱包的电脑使用前需要重装系统（系统最好使用安全的离线系统，如 Tails），手机要求使用原生系统，不安装其它任何软件。大家在如果在钱包的使用上有什么问题，可以回复，如果我能解答的，将及时回复。
+进一步的改进等内容
+
+
+
+Using MyEtherWallet For Cold Storage
+====================================
+
+### Preface
+
+The following assumes you are **not** using a Ledger or TREZOR hardware wallet. Due to their ease of use and security, [we recommend a hardware wallet for cold storage](https://myetherwallet.github.io/knowledge-base/hardware-wallets/hardware-wallet-recommendations.html).
+
+To save / backup your Ledger or TREZOR device, simply write down the 24-word phrase on the card they provide and keep it very, very safe. Never put this key on an online device or type it in to MyEtherWallet.com.
+
+### An amazing guide: Tails + KeePass + USB + MEW
+
+[https://steemit.com/cryptocurrency/@tomshwom/tomshwom-s-advanced-crypto-security-guide-part-3-creating-a-secure-wallet](https://steemit.com/cryptocurrency/@tomshwom/tomshwom-s-advanced-crypto-security-guide-part-3-creating-a-secure-wallet)
+
+You can run MyEtherWallet.com on your computer and this computer can be a cold-storage or offline computer. This means it is a computer that is not connected to the internet and _will never be connected to the internet again._ You can generate a wallet completely offline & send Ether or Tokens from the "Send Offline" page.
+
+### How To
+
+*   Go to [https://github.com/kvhnuke/etherwallet/releases/latest](https://github.com/kvhnuke/etherwallet/releases/latest).
+*   Click on `etherwallet-vX.X.X.X.zip`.
+*   Move zip to an airgapped computer.
+*   Unzip it and double-click `index.html`. This should open MyEtherWallet in your browser.
+    *   _Note: do not move files around in this folder. You need the entire folder for it to work correctly._
+*   Enter a strong but easy to remember password. Do not forget it.
+    *   _This encrypts (protects) your private key. It does not generate your private key. This password alone will **not** be enough to access your Ether._
+*   Click the `"Generate Wallet"` button.
+*   Download your `Keystore / UTC file` & save this file to a USB drive.
+    *   _This is the encrypted version of your private key. You need the password to access it. It is safer than your unencrypted private key but you must have your password to access it in the future._
+*   Read the warning. If you understand it, click the `"I understand. Continue"` button.
+*   Print your paper wallet backup and/or _carefully_ hand-write the `private key` on a piece of paper.
+    *   _If you are writing it, it is recommend you write it 2 or 3 times. This decreases the chance your messy handwriting will prevent you from accessing your wallet later._
+*   Copy & paste your address into a text document somewhere. Get it to your primary, online computer.
+    *   _Use the QR code or a different USB drive. It is best if you do not hand-write it_
+    *   _Search your address on [https://etherscan.io/](https://etherscan.io/). Bookmark this page. This is how you will view your balance at any time_
+*   Send a small amount of Ether (0.0001 ETH) from an exchange or another wallet to your new offline wallet.
+*   On your offline device, unlock your wallet from the Keystore / UTC file on your USB drive or via the private key that you printed out. Ensure it unlocks the wallet you are sent to and matches the bookmark you have.
+    *   _Do not simply leave your new wallet open. Pretend you are coming back a year later to access your riches. Can you do it?_
+*   Send a small amount of Ether (0.00001 ETH) from this new wallet to another address.
+    *   _Perhaps our donation address? We are a free, open-source service. There are no fees, no ads, no tracking, no cookies, no selling your data._
+*   Ensure you have recorded all necessary bits of information and the addresses match at all times. If they don't, you mis-wrote something somewhere. That means it's time to start from the beginning in order to make sure you never lose access to your funds.
+
+Doing all of this is tedious, but it ensures you (1) have complete access to your funds (2) the address you sent to is correct and matches the private key you have saved and (3) you can rest easily for years to come, knowing you will be able to access your ETH later.
+
+* * *
+
+### Safe Storage of Backups
+
+It is recommended that you store backups of both forms of your key (the keystore file version and paper wallet version) in physically separate, offline environments.
+
+This prevents loss of the private key & password due to: dead hard drive, lost USB drive, wet piece of paper, etc. Keep in mind that physical loss can affect an entire area (e.g. fire, flood).
+
+### We cannot recover your key
+
+MyEtherWallet is not a web wallet and cannot recover your private key or password, access your account, move funds, recover funds, nor cancel/reverse transactions.
+
+We are a client-side interface that allows you to interact with the Ethereum blockchain. Please secure & back up your key like the millions of dollars it could some day be worth.
+
+### Related Reading
+
+*   [What is the difference between private key & Keystore / UTC file?](https://myetherwallet.github.io/knowledge-base/private-keys-passwords/difference-beween-private-key-and-keystore-file.html)
+
+*   [Protecting yourself and your funds](https://myetherwallet.github.io/knowledge-base/security/securing-your-ethereum.html)
+
+
+
+
+* * *
+
+
+
+[Found a typo? Want to improve this article?  
+It's easy!](https://github.com/MyEtherWallet/knowledge-base/blob/master/src/content/offline/ethereum-cold-storage-with-myetherwallet.md)
+
+[Don't know how to submit a pull request?  
+It's also easy!](https://myetherwallet.github.io/knowledge-base/diving-deeper/how-to-submit-pull-request.html)
+
+参考文章：
+* https://myetherwallet.github.io/knowledge-base/offline/ethereum-cold-storage-with-myetherwallet.html
+
+* https://steemit.com/cryptocurrency/@tomshwom/tomshwom-s-advanced-crypto-security-guide-part-3-creating-a-secure-wallet

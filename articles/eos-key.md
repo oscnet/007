@@ -1,12 +1,12 @@
 ### 如何验证 eos 是否映射成功及验证私钥的正确性
 
-#### 验证 eos 是否映射成功
+#### 一、验证 eos 是否映射成功
 
-今天在群里看到很多人在问如何验证 eos 是否映射成功，这个在官网上有说明，比较简单，只要有映射的地址和公钥就可以了。
-技术点的说法是调用 eos 智能合约的 keys 函数，参数为地址，如果这个地址已经做过映射，则会返回对应的公钥。对照一下公钥是不是一样就可以了。
+今天在佳能群里看到有人在问如何验证 eos 是否映射成功，这个其实在 EOS 官网上有说明，操作也比较简单，只要有映射的地址和公钥就可以了。
+技术点的说法是调用 EOS 智能合约的 keys 函数，参数为地址，如果这个地址已经做过映射，则会返回对应的公钥。对照一下公钥是不是一样就可以了。
 下面我以 MyEtherWallet 为例说明一下：
 
-#### 打开 EOS 合约
+#### 1、打开 EOS 合约
 
  ![](../image/eos-1.png)
 
@@ -16,7 +16,7 @@
 
  3. 点击 Access
 
-#### 调用合约函数
+#### 2、调用合约函数
 
 ![](../image/eos-2.png)
 
@@ -27,7 +27,7 @@
 
 这个方法是安全的，因为只需要地址和公钥，不会露私钥。
 
-### 验证私钥的正确性
+### 二、验证私钥的正确性
 
 在映射后，很多人还是会担心：当时抄的密钥会不会抄错？验证的方法是有的。不过因为验证要用到私钥，所以要十分注意安全，**安全的电脑以及使用时不要联网都是必须的**。验证后私钥也不能保存在电脑里，要及时清除。如果没有安全的电脑，我觉得这个操作风险就太大了，不建议进行。
 
@@ -35,7 +35,7 @@
 
 ### 详细操作步骤
 
-* 编译源码
+* 1、编译源码
 
 如果没有 EOS 程序，就需要编译源码生成，下面简单的讲解下如何编译 EOS 源码，今天我在实际操作时，发现如今的 EOS 编译过程比以前简单多了，现在可以直接一个命令搞定，不再需要以前的很多准备工作了！
 
@@ -45,7 +45,7 @@ cd eos
 ./eosio_build.sh
 ```
 
-* 准备运行参数
+* 2、准备运行参数
 
  `cd build/programs/eosiod/`
 
@@ -85,7 +85,7 @@ plugin = eosio::wallet_api_plugin
 plugin = eosio::chain_api_plugin
 plugin = eosio::http_plugin
 ```
-* 断网，本地运行 eosiod
+* 3、断网，本地运行 eosiod
 
  `./eosiod --config-dir ./`
 
@@ -93,7 +93,7 @@ plugin = eosio::http_plugin
 
  `cd ../eosioc/`
 
-* 新建 EOS 钱包
+* 4、新建 EOS 钱包
 
  ```sh
  ./eosioc wallet create
@@ -103,20 +103,20 @@ plugin = eosio::http_plugin
  Without password imported keys will not be retrievable.
  "PW5JYqQdCMMyNZnqFfgNZp......cFcRNUtYr9n2qwxR4ZGX"
  ```
-* 解锁钱包
+* 5、解锁钱包
 ```sh
 ./eosioc wallet unlock
 password: 输入上个步骤中新建钱包后输出的密码
 Unlocked: default
 ```
-* 导入私钥
+* 6、导入私钥
 ```sh
 ./eosioc wallet import 5JQHMm......J5oS
 imported private key for: EOS6cn8E4xVRfGzw.......MwDnuUPZ4z8vwtC
 ```
 可以看到有对应的公钥出来，如果能跟映射生成的公钥相同，则私钥是正确的。
 
-* 列出钱包的公钥和私钥
+* 7、列出钱包的公钥和私钥
 ```sh
 ./eosioc wallet keys
 [[
@@ -126,3 +126,10 @@ imported private key for: EOS6cn8E4xVRfGzw.......MwDnuUPZ4z8vwtC
 ]
 ```
 好了，用完记得删除 build/var/lib/eosio/node_00/./default.wallet 这个钱包文件
+以上步骤都经实际操作成功，有可能因为系统原因，可能会有步骤不同，大家可以留言讨论。
+
+另外，佳能群的旭提供了一个网址：https://github.com/webdigi/EOS-Offline-Private-key-check，上面的程序说可以下载到本地断网验证。还末测试，供参考。
+
+作者：鱼
+https://bihu.com/edit/76465
+如何验证 eos 是否映射成功及验证私钥的正确性
